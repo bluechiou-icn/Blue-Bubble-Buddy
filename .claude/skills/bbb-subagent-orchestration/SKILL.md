@@ -13,7 +13,7 @@ This skill tells you when to hand a sub-task to a subagent and when to do it you
 
 - The task is small and single-threaded (a few tool calls, one file). Just do it. Delegation overhead exceeds the work.
 - You want the iteration discipline *within* a task — decomposing a goal, defining checks before acting, deciding when to stop. That is `bbb-eval-loop`.
-- You want the per-session behavior contract (conclusion-first, evidence, scope, turn-ending). That is `f5-mode`.
+- You want the per-session behavior contract (conclusion-first, evidence, scope, turn-ending). That is `b5-mode`.
 - You want how changes to THIS skill library are gated and reviewed. That is `bbb-change-control` (it instantiates the reviewer pattern below with specific gates).
 - You want what counts as evidence in a report. That is `bbb-verification-and-evidence`.
 
@@ -42,7 +42,7 @@ A subagent prompt is a contract. Anything ambiguous, the agent will fill with gu
 2. **Pointers to shared context it must read, as absolute paths, with read order.** Subagents typically get a fresh working directory per command; relative paths break. Say "READ FIRST, in order: /abs/path/brief.md, then /abs/path/spec.md".
 3. **Exact deliverable and output path.** What artifact, in what format, written where. "Write findings to /abs/path/review-x.md as a severity-tagged list" — never "review it".
 4. **Explicit boundaries.** What it must NOT do or touch: "Write ONLY inside <dir>; the rest of the repo is read-only; do not modify sibling X's files."
-5. **Constraints.** The standing safety rules, restated because the agent has not read them anywhere else: no mutating git commands (add/commit/push/checkout); verify every command by running it before publishing it; label anything unverifiable.
+5. **Constraints.** The standing safety rules, restated because the agent has not read them anywhere else: no mutating git commands (add/commit/push/checkout) unless committing or pushing IS the agent's deliverable — then name the exact branch; verify every command by running it before publishing it; label anything unverifiable.
 6. **The report format expected back.** Tell it exactly what its final message must contain (e.g. "reply with: output path, 1-line summary, commands verified, anything unverified"). Otherwise you get either a novel or "Done."
 
 Before spawning, reread the prompt asking one question: "Could a stranger with no memory of this conversation execute this without asking me anything?" If not, fix the prompt.
@@ -124,7 +124,7 @@ A subagent's final message is returned only to you, the orchestrator. The user h
 
 ## 8. Graceful degradation: no subagent capability
 
-If the current environment has no subagent capability (no Agent/Task-style tool in your tool list), execute the sub-tasks yourself, sequentially, in the order you would have delegated them — and do not announce the difference to the user. The plan's decomposition (§1–§5) still applies; only the executor changes. The user asked for the outcome, not a tour of your tooling constraints. (Rule preserved from this library's V1.0 `f5-mode` §7.)
+If the current environment has no subagent capability (no Agent/Task-style tool in your tool list), execute the sub-tasks yourself, sequentially, in the order you would have delegated them — and do not announce the difference to the user. The plan's decomposition (§1–§5) still applies; only the executor changes. The user asked for the outcome, not a tour of your tooling constraints. (This is the behavior contract's delegation rule — `b5-mode` Rule 7; this section owns its mechanics.)
 
 The reviewer pattern (§5) degrades too: review your own work in separate, labeled passes — one factual pass, one doctrine pass, one usability pass — reading the artifact fresh each time, and only then fix.
 
@@ -133,4 +133,4 @@ The reviewer pattern (§5) degrades too: review your own work in separate, label
 - Authored 2026-07-07, by a subagent of the Blue-Bubble-Buddy library build — one authoring agent per skill working from a shared brief, i.e. an instance of §3.
 - This skill is process doctrine and contains no shell commands to drift. Its volatile facts are environmental:
   - The mechanism for spawning subagents varies by harness and version (as of 2026-07-07, Claude Code exposes it as the Agent/Task tool, with optional background execution and follow-up messaging to a spawned agent). Re-verify by checking the tool list available in your current session before promising parallelism — this cannot be verified by a shell command.
-  - Sibling skill names referenced here (`bbb-eval-loop`, `f5-mode`, `bbb-change-control`, `bbb-verification-and-evidence`). Re-verify: `ls /home/user/Blue-Bubble-Buddy/.claude/skills/` (in a target repo, `ls .claude/skills/` from the repo root).
+  - Sibling skill names referenced here (`bbb-eval-loop`, `b5-mode`, `bbb-change-control`, `bbb-verification-and-evidence`). Re-verify: `ls .claude/skills/` from the repo root.

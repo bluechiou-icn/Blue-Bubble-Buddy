@@ -15,7 +15,7 @@ This skill defines the evidence bar for all work: what counts as proof that some
 - You are verifying visual output (UI, charts, rendered documents): load `bbb-visual-self-check`, which ships a working screenshot script. Reading the code that produces a visual is never verification of the visual.
 - You are making a research-grade claim (a hypothesis about why something behaves a certain way, a performance comparison you want others to trust): load `bbb-research-methodology`, which adds predictions-before-running and adversarial refutation on top of this skill's bar.
 - You are debugging and need the "one mechanism must explain ALL observations" standard: load `bbb-debugging-playbook`.
-- You want the overall session behavior contract that this evidence bar plugs into (conclusion-first replies, turn-ending discipline): load `f5-mode`.
+- You want the overall session behavior contract that this evidence bar plugs into (conclusion-first replies, turn-ending discipline): load `b5-mode`.
 
 ## The evidence hierarchy
 
@@ -97,4 +97,4 @@ Rules for filling it in: every "Done" line carries its own command and result (e
 - Volatile facts: the recipe commands assume GNU coreutils on Linux (`sha256sum`, `shuf`, `wc`, `grep -r --exclude-dir`, `diff`), verified in this repo's environment as of 2026-07-07. On macOS, `sha256sum` may be `shasum -a 256` and `shuf` may be `gshuf` (unverified — no macOS host in this environment).
 - Re-verify tool availability: `command -v sha256sum shuf wc grep diff` (all five paths should print).
 - Re-verify the deletion recipe's no-match behavior: `grep -rn "string_that_does_not_exist" --exclude-dir=.git . ; echo "exit: $?"` (expect `exit: 1`).
-- Re-verify sibling cross-references still exist: `ls /path/to/repo/.claude/skills/` should list `bbb-eval-loop`, `bbb-visual-self-check`, `bbb-research-methodology`, `bbb-debugging-playbook`, `bbb-state-and-memory`, and `f5-mode`.
+- Re-verify sibling cross-references still exist: `ls /path/to/repo/.claude/skills/` should list `bbb-eval-loop`, `bbb-visual-self-check`, `bbb-research-methodology`, `bbb-debugging-playbook`, `bbb-state-and-memory`, and `b5-mode`.

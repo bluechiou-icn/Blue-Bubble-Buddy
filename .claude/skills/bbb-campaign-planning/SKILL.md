@@ -91,10 +91,9 @@ Fable-class discipline. Today "does it work?" is judged by reading transcripts
 library ≥ a pre-registered threshold above the no-library baseline, stable
 across 3 runs per task.
 
-- **Phase 1 — Rubric and baseline.** Derive a binary rubric from the `f5-mode`
-  contract (first sentence answers what-happened? each claim maps to a tool
-  result? scope creep count = 0? turn ends only when done-or-blocked? evidence
-  labels present?). Run 3 benchmark tasks (one debug, one feature, one report)
+- **Phase 1 — Rubric and baseline.** Derive a binary rubric from the `b5-mode`
+  contract per recipe 2 in `bbb-research-methodology` (five yes/no checks on
+  the final transcript). Run 3 benchmark tasks (one debug, one feature, one report)
   WITHOUT the library; score transcripts. EXPECT: measurable rubric misses in
   the baseline (if baseline is already near-perfect → the rubric is too easy →
   branch: tighten rubric before proceeding).

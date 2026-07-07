@@ -144,10 +144,8 @@ specifies; it is a heuristic, so read its hits before deleting anything.
 
 ## Worked example: one full distillation, end to end
 
-This library's founding incident, walked through the pipeline. (The incident in brief:
-V1.0 shipped its only skill as a `Blue_Bubble.skill` zip at the repo root, where Claude
-Code cannot discover skills, and the zip was deleted in the next commit. The full story
-is archaeology entry #1 — see `bbb-failure-archaeology`.)
+This library's founding incident — the V1.0 packaging mistake recorded as
+entry AR-001 in `bbb-failure-archaeology` — walked through the pipeline.
 
 | Pipeline stage | What happened here |
 |---|---|

@@ -26,7 +26,9 @@ A claim is accepted only when BOTH hold:
 
 1. **One mechanism explains ALL observations — including the negatives.**
    If your explanation covers why A improved but not why B didn't change,
-   you do not have a result; you have a coincidence with a story.
+   you do not have a result; you have a coincidence with a story. (The
+   canonical statement of this bar lives in `bbb-debugging-playbook`; it
+   applies here at research scale.)
 2. **It survives assigned adversarial refutation.** Someone — a human or a
    subagent with an explicit prompt (`bbb-subagent-orchestration`) — is given
    the job of breaking the claim: alternative explanations, confounds,
@@ -73,7 +75,7 @@ against a pre-registered rubric; compare arms per dimension, not just in
 aggregate.
 
 **2. Binary rubric design.** Rubric items must be checkable yes/no per
-transcript, not 1–10 vibes. Example, derived from the `f5-mode` contract:
+transcript, not 1–10 vibes. Example, derived from the `b5-mode` contract:
 
 | # | Check (yes/no) |
 |---|---|
@@ -118,7 +120,7 @@ itself a finding.
 - Authored 2026-07-07 for the Blue-Bubble-Buddy skill library (Advanced
   layer). The method sections are doctrine; the worked example is a design,
   not a result, and must be updated (Class 2) if the experiment is ever run.
-- Volatile facts: none executable; the example rubric mirrors the `f5-mode`
+- Volatile facts: none executable; the example rubric mirrors the `b5-mode`
   contract — if that contract changes, regenerate the rubric.
 - Re-verify cross-references: `ls .claude/skills/` at the library root should
   list every sibling named here.

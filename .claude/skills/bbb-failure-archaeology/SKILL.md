@@ -146,7 +146,7 @@ The following is a real entry, verified against this repository's git history on
   (lists one file: `f5-mode/SKILL.md`, 4,012 bytes).
 - **Fix / resolution:** The library was rebuilt under `.claude/skills/`,
   where Claude Code discovers skills automatically; `f5-mode` was re-authored
-  as a proper skill directory. For the packaging rules per surface
+  as a proper skill directory (later renamed `b5-mode` by the owner). For the packaging rules per surface
   (project skills vs user skills vs claude.ai upload), see
   `bbb-install-and-use`. This incident is also the rationale behind the
   library doctrine "skills live only at `.claude/skills/<name>/SKILL.md`".
@@ -168,5 +168,5 @@ Note what the entry does: SHAs a stranger can check, a recovery command they can
 - Authored 2026-07-07 for the Blue-Bubble-Buddy skill library (Memory pillar).
 - All git commands above were verified by running them against this repository's real history on 2026-07-07. They use only stable, decades-old git plumbing/porcelain and are unlikely to drift.
 - Volatile facts: the seed entry's SHAs (`9e292eb`, `964db20`) are permanent unless the repository history is rewritten; the claim that Claude Code loads skills only from `.claude/skills/<name>/SKILL.md` is product behavior (as of 2026-07-07) and is owned, with its re-verification procedure, by `bbb-install-and-use`.
-- Re-verify the seed entry in one line: `git log --oneline --all -- Blue_Bubble.skill` (expect `964db20` delete and `9e292eb` add), then `git show 9e292eb:Blue_Bubble.skill | head -c 4 | xxd` (expect `PK` — a ZIP signature).
+- Re-verify the seed entry in one line: `git log --oneline --all -- Blue_Bubble.skill` (expect `964db20` delete and `9e292eb` add), then `git show 9e292eb:Blue_Bubble.skill | head -c 4 | od -c` (expect `P   K 003 004` — the ZIP signature; `od` used because `xxd` is not installed in every environment; verified 2026-07-07).
 - Re-verify the mining commands against any repo with history: each is read-only; if one errors, check `git --version` first (verified here against git in this environment on 2026-07-07).

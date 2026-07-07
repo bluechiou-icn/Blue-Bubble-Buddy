@@ -24,16 +24,16 @@ cited as one (`bbb-change-control`, non-negotiable 3).
 - **Why current practice fails:** skill quality is judged by humans reading
   transcripts. There is no regression signal — an edit that degrades model
   behavior ships silently, because nothing measures behavior before and after.
-- **This project's asset:** a rubric-friendly behavior contract (`f5-mode`) —
+- **This project's asset:** a rubric-friendly behavior contract (`b5-mode`) —
   binary-checkable discipline rules — plus written methodology
   (`bbb-research-methodology`) for scoring transcripts against it.
 - **First three steps in this repo:** (1) commit 3 benchmark task definitions
   under `eval/tasks/`; (2) commit the binary rubric as `eval/rubric.md`,
-  derived from the f5-mode contract; (3) write `eval/score.md` — the manual
+  derived from the b5-mode contract; (3) write `eval/score.md` — the manual
   scoring protocol — and score one real transcript to shake out ambiguous
   rubric items.
 - **You have a result when:** a deliberately degraded copy of a skill (e.g.
-  f5-mode with the evidence rules deleted) scores lower than the intact skill
+  b5-mode with the evidence rules deleted) scores lower than the intact skill
   by a pre-registered margin, while the intact skill's score is stable across
   3 runs. If a known-bad skill does NOT score lower, the harness is refuted.
 
@@ -76,7 +76,9 @@ cited as one (`bbb-change-control`, non-negotiable 3).
   ready-made test corpus.
 - **First three steps:** (1) for each of 5 skills, author 5 should-load and 5
   should-not-load task prompts; (2) run and record which skills actually load;
-  (3) publish the confusion table and rewrite the worst description (Class 2).
+  (3) publish the confusion table and rewrite the worst description (Class 2,
+  or higher if trigger behavior changes materially — take the higher class
+  when in doubt).
 - **You have a result when:** description edits move precision/recall in the
   predicted direction on held-out prompts — description quality becomes
   steerable, not folklore.
