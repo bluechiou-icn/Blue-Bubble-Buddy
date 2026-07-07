@@ -3,9 +3,9 @@ name: bbb-failure-archaeology
 description: Maintains the project's permanent failure chronicle (ARCHAEOLOGY.md) so no settled battle is refought. Load this skill when finishing any investigation that took more than ~30 minutes, when rejecting an approach or reverting a change, when a bug feels familiar ("didn't we hit this before?"), when joining an unfamiliar project and needing to reconstruct its past failures from git history, or when deciding whether a proposed fix was already tried and rejected. Covers the entry format (symptom, root cause, evidence, status), the append-only rules, and verified git commands for mining reverts, deleted files, and dead branches.
 ---
 
-# Failure Archaeology — the Permanent Chronicle
+# Failure Archaeology — the permanent chronicle
 
-## Purpose and when to use
+## Purpose
 
 This skill defines the chronicle discipline: every major investigation, dead end, rejected fix, and revert gets a permanent written record — symptom, root cause, evidence, status — in an append-only file called `ARCHAEOLOGY.md`. The payoff is that no engineer or model session ever re-fights a settled battle: before attempting a fix, you check the chronicle; after finishing an investigation, you write the entry. Load this skill when you finish a significant investigation, when you revert or reject something, or when you join a project and need to reconstruct its failure history from git.
 
@@ -14,6 +14,16 @@ This skill defines the chronicle discipline: every major investigation, dead end
 - **Tracking current state and open tasks** — what is in progress, what was fixed this run, what is escalated. That is `bbb-state-and-memory` (STATE.md). Rule of thumb: STATE.md is *current and mutable*; the chronicle is *permanent and append-only*. A finished investigation moves from STATE.md's "open" list into an ARCHAEOLOGY.md entry.
 - **Turning an incident into a standing behavior rule** ("never do X again"). That is `bbb-rule-distillation`. The chronicle records *what happened and why*; distillation extracts the *rule* from it. An entry here often becomes the cited evidence for a distilled rule.
 - **Running the investigation itself.** That is `bbb-debugging-playbook`. This skill only governs how you record the result.
+
+## The trigger rule — when an entry MUST be written
+
+Write an entry, at the moment of finishing and by the person or session that did the work (context evaporates within hours):
+
+1. **Any investigation that took more than ~30 minutes**, whether or not it produced a fix. The 30-minute bar is a floor, not a target — a 5-minute finding that will recur is also worth an entry.
+2. **Every rejected approach** — a fix that was designed or attempted and then abandoned. Record *why* it was rejected; this is the highest-value entry type.
+3. **Every revert.** If a commit gets backed out, the chronicle explains what the commit tried to do and why it had to go. The revert commit message should reference the entry ID.
+
+This is the final step of the debugging exit protocol in `bbb-debugging-playbook`: an investigation is not finished until its entry exists. If the same class of incident produces a second entry, that is the signal to load `bbb-rule-distillation` and turn it into a standing rule.
 
 ## The entry format
 
@@ -53,17 +63,7 @@ Field rules:
 - **File:** `ARCHAEOLOGY.md` at the target project's repo root. If the project keeps documentation under `docs/`, use `docs/archaeology.md` instead — pick one location and never split across both.
 - **Append-only.** New entries go at the END of the file (chronological order; newest last). Entries are never deleted and never rewritten. If a conclusion turns out to be wrong, write a NEW entry with the corrected finding and mark the old one `superseded by AR-<NNN>`. History of being wrong is itself evidence.
 - **Committed to the repo**, same as code. It must survive every session, machine, and team change — that is the whole point.
-- **Division of labor with STATE.md** (owned by `bbb-state-and-memory`): STATE.md holds what is true *now* and what is *in flight*; ARCHAEOLOGY.md holds what was *concluded* and must never be relearned. When an investigation closes, summarize the conclusion into an ARCHAEOLOGY.md entry and remove the working notes from STATE.md.
-
-## The trigger rule — when an entry MUST be written
-
-Write an entry, at the moment of finishing and by the person or session that did the work (context evaporates within hours):
-
-1. **Any investigation that took more than ~30 minutes**, whether or not it produced a fix. The 30-minute bar is a floor, not a target — a 5-minute finding that will recur is also worth an entry.
-2. **Every rejected approach** — a fix that was designed or attempted and then abandoned. Record *why* it was rejected; this is the highest-value entry type.
-3. **Every revert.** If a commit gets backed out, the chronicle explains what the commit tried to do and why it had to go. The revert commit message should reference the entry ID.
-
-This is the final step of the debugging exit protocol in `bbb-debugging-playbook`: an investigation is not finished until its entry exists. If the same class of incident produces a second entry, that is the signal to load `bbb-rule-distillation` and turn it into a standing rule.
+- **Division of labor with STATE.md** (owned by `bbb-state-and-memory`): when an investigation closes, summarize the conclusion into an ARCHAEOLOGY.md entry and remove the working notes from STATE.md.
 
 ## Mining git history when joining a project
 

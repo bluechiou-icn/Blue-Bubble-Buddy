@@ -3,9 +3,9 @@ name: bbb-state-and-memory
 description: Cross-session memory discipline via STATE.md — read it before starting any run, update it after every run, and leave handoff notes a zero-context successor can resume from. Load this skill at the start of any session in a repo that has (or should have) a STATE.md; before ending any working session; when the user says "update state", "handoff", "pick up where we left off", "resume", "what did the last session do", or "continue"; or when deciding whether a fact belongs in STATE.md, ARCHAEOLOGY.md, CLAUDE.md, code, or docs. Provides the STATE.md template, the division-of-memory table, the session-handoff checklist, and staleness/date-stamp rules. Not for writing investigation post-mortems (use bbb-failure-archaeology) or turning corrections into standing rules (use bbb-rule-distillation).
 ---
 
-# bbb-state-and-memory — STATE.md discipline and session handoff
+# State and Memory — STATE.md discipline and session handoff
 
-## Purpose / when to use
+## Purpose
 
 This skill defines how work survives the end of a session. Claude Code sessions
 (and human working sessions) lose all conversational context when they end; the

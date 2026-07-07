@@ -5,7 +5,7 @@ description: Disciplined, project-agnostic debugging method — reproduce first,
 
 # Debugging Playbook
 
-## Purpose / when to use
+## Purpose
 
 This skill is the method for finding out WHY something is broken, in any project. Load it the moment you are handed a bug, a failing test, a crash, a regression, or any "X does not work" report. It gives you a fixed loop (reproduce → triage → discriminate → explain → fix → verify → record) that replaces guess-and-retry, and a triage-table template each project should fill in with its own known failure modes. The core promise: a fix accepted under this playbook is explained, not lucky.
 

@@ -3,9 +3,9 @@ name: bbb-subagent-orchestration
 description: Teaches when and how to delegate work to subagents (worker agents spawned with their own prompt and zero conversation context) versus doing the work inline. Load this skill when you are about to spawn a subagent or Task/Agent-tool worker; when planning parallel work such as research fan-out, one-agent-per-unit authoring, or adversarial review; when writing a subagent prompt or a shared brief for several agents; when deciding whether tasks can run in parallel or must run sequentially; when a running agent looks stuck or off-track and you must intervene; when relaying a finished agent's results to the user; or when the environment has no subagent capability and you must degrade gracefully. Not for the within-task goal/action/check loop (see bbb-eval-loop).
 ---
 
-# Subagent Orchestration: When and How to Delegate
+# Subagent Orchestration — when and how to delegate
 
-## Purpose / when to use
+## Purpose
 
 This skill tells you when to hand a sub-task to a subagent and when to do it yourself, and gives you the exact prompt structure, workflow patterns, and supervision rules that make delegation reliable. A "subagent" is a separate agent session you spawn with a written prompt (in Claude Code, via the Agent/Task tool); it starts with zero knowledge of your conversation and returns one final report. Use this skill the moment you are considering spawning one.
 

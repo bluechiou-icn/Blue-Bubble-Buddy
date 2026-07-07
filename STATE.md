@@ -17,26 +17,32 @@ Format and rules: `.claude/skills/bbb-state-and-memory/SKILL.md`.
   `grep -rn "f5-mode" .claude/skills/ README.md | grep -v b5-mode`
   (expect 4 historical lines: 1 in bbb-install-and-use, 3 in bbb-failure-archaeology).
 
-## Last run log — 2026-07-07 (founding session)
+## Last run log — 2026-07-07 (readability pass; founding-session log in git history)
 
-- **Goal:** build the complete library per the owner's specification
-  (discover → author via parallel agents → 3-reviewer pass → fix → push).
-- **Authoring:** 16 skills; 8 written by parallel subagents, 8 inline after an
-  account session limit (reset 05:10 UTC) terminated 13 of 16 authoring agents
-  mid-run (their finished files were recovered from disk where complete).
-- **Review:** DOCTRINE and USABILITY reviews completed over the full set
-  (1 blocking, 6 important, ~19 minor findings). FACTUAL review was terminated
-  by the same session limit — INCOMPLETE; its one reported finding (`xxd` not
-  installed) is fixed (`od -c` substituted, verified).
-- **Fixer:** all blocking and important findings applied, plus cheap minors:
-  doctrine scope note in bbb-change-control; one-mechanism bar canonicalized
-  to bbb-debugging-playbook; install-and-use verification wording made honest;
-  eval-loop ↔ debugging-playbook tiebreaker added both ways; git-history
-  mining consolidated into bbb-failure-archaeology; V1.0-incident retellings
-  trimmed to pointers (AR-001); portable re-verify paths; subagent git-command
-  constraint scoped to non-deliverable pushes.
-- **Owner actions honored:** rename f5-mode → b5-mode (commits `e38d20f`,
-  `637f4ef`), README lineage section removal (`1936d23`).
+- **Goal:** owner-requested documentation pass — refine wording, normalize
+  headings, and reorder sections for AI-agent readability, without changing
+  any skill's meaning, commands, or frontmatter descriptions.
+- **Changes (Class 1–2, single-session self-review — no second session
+  available; deviation recorded here per bbb-change-control):**
+  - All 16 skills now conform to the spec's section headings: first section is
+    `## Purpose` everywhere (was `Purpose / when to use` in 5 files, missing
+    in b5-mode); H1 titles normalized to "Title — subtitle" style (name-prefix
+    H1s removed from bbb-eval-loop, bbb-state-and-memory).
+  - Deferred minors applied: bbb-verification-and-evidence evidence-hierarchy
+    table split into per-level bullet blocks; bbb-failure-archaeology
+    STATE/chronicle division recap compressed to one clause.
+  - bbb-failure-archaeology: trigger-rule section moved before entry format
+    (when-to-write before what-to-write); no text changed.
+  - README: skill inventory moved before Quick start (cross-references now
+    resolve in reading order); intro verb tightened. CLAUDE.md unchanged
+    (already in canonical rule form). Two sentence-level refinements
+    (bbb-eval-loop, bbb-skill-authoring heading).
+- **Evidence:** full diff re-read (Class 1 gate); frontmatter validated for
+  all 16 (name = dir, desc ≤1024); `ls .claude/skills/ | wc -l` → 16;
+  f5-mode grep → 4 historical lines; routing-around grep → exactly 1 match
+  (the check line itself). No published command text was altered.
+- **Owner actions honored (founding session):** rename f5-mode → b5-mode
+  (commits `e38d20f`, `637f4ef`), README lineage section removal (`1936d23`).
 
 ## Open items / escalations
 
@@ -46,12 +52,10 @@ Format and rules: `.claude/skills/bbb-state-and-memory/SKILL.md`.
    time; the independent re-verification pass never finished. OWNER of next
    session.
 2. Deferred minor findings (fix opportunistically, Class 1–2):
-   - `bbb-verification-and-evidence`: evidence-hierarchy table cells are dense;
-     split nuances into bullets.
    - `b5-mode` always-on trigger and `bbb-state-and-memory` "or should have"
      trigger: precision unmeasured — pending frontier problem F4.
-   - `bbb-failure-archaeology`: two-sentence STATE/chronicle division recap
-     could compress to one clause.
+   - (Done 2026-07-07, readability pass: verification-and-evidence table
+     split into bullets; failure-archaeology division recap compressed.)
 3. Five skills are below the 120-line body target (95–119 lines) — accepted;
    the floor is a target, not a gate. Do not pad.
 

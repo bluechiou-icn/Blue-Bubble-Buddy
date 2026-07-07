@@ -18,7 +18,7 @@ right moment, teach in imperative voice, and contain nothing unverified.
 - Getting a finished skill reviewed and merged: `bbb-change-control` owns
   classification, gates, and the reviewer workflow.
 
-## Loading mechanics — the fact that changes everything
+## Loading mechanics — the governing constraint
 
 A model deciding whether to use a skill sees ONLY the frontmatter `name` and
 `description`. The body loads only after the description wins that decision.

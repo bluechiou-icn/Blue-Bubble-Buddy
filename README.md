@@ -1,7 +1,7 @@
 # Blue-Bubble-Buddy
 
-A portable skill library that lets junior/mid-level engineers and smaller AI
-models (Sonnet-class) carry any project forward with the discipline of a
+A portable skill library that equips junior/mid-level engineers and smaller AI
+models (Sonnet-class) to carry any project forward with the discipline of a
 principal engineer. Sixteen skills teach four pillars: **Primitives** (how to
 communicate, act, verify, stop), **Orchestration** (goal → action → check →
 repeat; delegation), **Memory** (state, handoffs, failure chronicles), and
@@ -12,20 +12,6 @@ Each skill is a self-contained runbook at `.claude/skills/<name>/SKILL.md`,
 written for a zero-context reader: imperative voice, verified copy-pasteable
 commands, when-NOT-to-use boundaries, and a provenance section with
 re-verification one-liners.
-
-## Quick start
-
-Copy the starter set into any repo (full options: `bbb-install-and-use`):
-
-```bash
-mkdir -p "$TARGET/.claude/skills"
-cp -r .claude/skills/b5-mode .claude/skills/bbb-eval-loop \
-      .claude/skills/bbb-verification-and-evidence .claude/skills/bbb-state-and-memory \
-      "$TARGET/.claude/skills/"
-```
-
-Add the rest when a real need appears — first hard bug → `bbb-debugging-playbook`,
-first UI work → `bbb-visual-self-check`, and so on.
 
 ## The skills
 
@@ -64,6 +50,20 @@ first UI work → `bbb-visual-self-check`, and so on.
 | `bbb-campaign-planning` | Decision-gated campaigns for multi-session problems: phases with pre-committed expected observations, branches, fenced wrong paths. |
 | `bbb-research-methodology` | Hypothesis-predicts-numbers-before-running, adversarial refutation, and the idea lifecycle ending in adoption or documented retirement. |
 | `bbb-research-frontier` | The open problems (eval harness, cross-model parity, automated distillation…) with first steps and falsifiable milestones — all labeled open/candidate. |
+
+## Quick start
+
+Copy the starter set into any repo (full options: `bbb-install-and-use`):
+
+```bash
+mkdir -p "$TARGET/.claude/skills"
+cp -r .claude/skills/b5-mode .claude/skills/bbb-eval-loop \
+      .claude/skills/bbb-verification-and-evidence .claude/skills/bbb-state-and-memory \
+      "$TARGET/.claude/skills/"
+```
+
+Add the rest when a real need appears — first hard bug → `bbb-debugging-playbook`,
+first UI work → `bbb-visual-self-check`, and so on.
 
 ## Working on this library
 

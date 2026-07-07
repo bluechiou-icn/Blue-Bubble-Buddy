@@ -3,9 +3,9 @@ name: bbb-rule-distillation
 description: Turns corrections, incidents, and repeated mistakes into durable written rules, and maintains those rules over time. Load this skill when the user corrects the same class of behavior a second time; when an investigation or incident reveals a non-obvious constraint worth writing down; when a review keeps flagging the same defect pattern; when deciding whether a piece of feedback should become a rule at all; when choosing where a rule lives (CLAUDE.md vs STATE.md vs the archaeology chronicle vs a full skill); when a cluster of related rules has grown enough to be promoted into a skill; or when an existing rule fires wrongly, has gone stale, or is being ignored and needs auditing or retirement. Do NOT load it for recording what happened (bbb-failure-archaeology), tracking current work (bbb-state-and-memory), or writing the skill itself (bbb-skill-authoring).
 ---
 
-# Rule Distillation — Turning Corrections into Durable Rules
+# Rule Distillation — turning corrections into durable rules
 
-## Purpose and when to use
+## Purpose
 
 This skill is the self-improvement pipeline that converts corrections, incidents, and
 repeated mistakes into durable rules — short written instructions that future sessions
