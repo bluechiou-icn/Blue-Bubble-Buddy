@@ -35,51 +35,56 @@ Copy the wanted skill directories into the target repo:
 ```bash
 # from the Blue-Bubble-Buddy repo root; TARGET is the consuming repo's root
 mkdir -p "$TARGET/.claude/skills"
-cp -r .claude/skills/f5-mode "$TARGET/.claude/skills/"
+cp -r .claude/skills/b5-mode "$TARGET/.claude/skills/"
 ```
 
-(Verified 2026-07-07: the copied directory contains SKILL.md and is picked up
-by Claude Code's skill discovery in the target repo.) Repeat per skill, or copy
-several at once: `cp -r .claude/skills/f5-mode .claude/skills/bbb-eval-loop "$TARGET/.claude/skills/"`.
+(Copy verified 2026-07-07: the copied directory contains SKILL.md. Discovery
+was observed in this library's own repo — skills became loadable as soon as
+their directories existed; pickup by a fresh session in a *target* repo uses
+the same mechanism but was not separately observed — re-verify per the
+Provenance section.) Repeat per skill, or copy
+several at once: `cp -r .claude/skills/b5-mode .claude/skills/bbb-eval-loop "$TARGET/.claude/skills/"`.
 Commit them in the target repo so the whole team's sessions get them. To track
 upstream updates instead of snapshotting, `git subtree` or a submodule works,
 at the cost of tying the target repo to this one (unverified here — plain copy
 is the recommended default).
 
-**Start small.** A new project should adopt the starter set — `f5-mode`,
+**Start small.** A new project should adopt the starter set — `b5-mode`,
 `bbb-eval-loop`, `bbb-verification-and-evidence`, `bbb-state-and-memory` — and
 add others when a real need appears (first hard bug → `bbb-debugging-playbook`;
 first UI work → `bbb-visual-self-check`). Installing all 16 into a small
-project is scope inflation and dilutes trigger precision.
+project is scope inflation and risks diluting trigger precision (unmeasured —
+see `bbb-research-frontier` F4).
 
 ## Claude Code, user-level
 
 ```bash
 mkdir -p ~/.claude/skills
-cp -r .claude/skills/f5-mode ~/.claude/skills/
+cp -r .claude/skills/b5-mode ~/.claude/skills/
 ```
 
 Prefer project-level when a team shares the repo (everyone gets the same
 discipline, versioned and reviewable); user-level for personal behavior skills
-like `f5-mode` that you want in every repo without touching each one.
+like `b5-mode` that you want in every repo without touching each one.
 
 ## claude.ai upload (.skill packaging)
 
 A `.skill` file is a ZIP whose top-level entry is the skill folder itself:
 
 ```bash
-cd .claude/skills && zip -r /path/out/Blue_Bubble.skill f5-mode/
+cd .claude/skills && zip -r /path/out/Blue_Bubble.skill b5-mode/
 ```
 
 Verify the internal layout before shipping — this exact check:
 
 ```bash
 unzip -l /path/out/Blue_Bubble.skill
-# expect:  f5-mode/  and  f5-mode/SKILL.md   (NOT SKILL.md at the ZIP root)
+# expect:  b5-mode/  and  b5-mode/SKILL.md   (NOT SKILL.md at the ZIP root)
 ```
 
 (Both commands verified 2026-07-07; the layout matches the original V1.0
-artifact, which contained `f5-mode/SKILL.md`.) Then upload in claude.ai under
+artifact, which contained `f5-mode/SKILL.md` — the behavior contract's name
+before the owner renamed it `b5-mode`.) Then upload in claude.ai under
 Settings → Capabilities (unverified — requires a claude.ai account session;
 menu names may drift).
 
@@ -110,4 +115,4 @@ menu names may drift).
 - Re-verify discovery paths: create a dummy skill dir with a minimal SKILL.md
   in a scratch repo and confirm a new Claude Code session there lists it.
 - Re-verify packaging in one line:
-  `cd .claude/skills && zip -qr /tmp/t.skill f5-mode/ && unzip -l /tmp/t.skill | grep f5-mode/SKILL.md`
+  `cd .claude/skills && zip -qr /tmp/t.skill b5-mode/ && unzip -l /tmp/t.skill | grep b5-mode/SKILL.md`

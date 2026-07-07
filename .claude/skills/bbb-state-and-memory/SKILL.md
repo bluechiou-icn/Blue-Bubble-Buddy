@@ -45,7 +45,7 @@ passes of the Goal→Action→Check loop — see `bbb-eval-loop`).
    **classified** (issues triaged, findings categorized), what fixes were
    **drafted or applied** (with evidence), and what was **escalated** (handed
    to a human or another owner). This is part of finishing the task, not
-   optional cleanup — the turn-ending discipline in `f5-mode` applies: you may
+   optional cleanup — the turn-ending discipline in `b5-mode` applies: you may
    not end a run with the STATE.md update still on your to-do list.
 
 3. **The failure mode this prevents:** a session that ends without updating
@@ -207,13 +207,13 @@ A state claim is only as good as its date. Rules:
 ## Provenance and maintenance
 
 - Authored 2026-07-07 for the Blue-Bubble-Buddy skill library (Memory pillar),
-  from the project owner's Phase 0 specification ("Update STATE.md after each
+  from the library owner's founding requirement ("Update STATE.md after each
   run with classifications, fixes drafted, escalations. Read it before start.").
 - Volatile facts in this skill: the sibling-skill names in the cross-references
   and the division-of-memory table (`bbb-failure-archaeology`,
   `bbb-rule-distillation`, `bbb-verification-and-evidence`,
-  `bbb-project-discovery`, `bbb-eval-loop`, `f5-mode`) are accurate as of
-  2026-07-07; re-verify with `ls /home/user/Blue-Bubble-Buddy/.claude/skills/`.
+  `bbb-project-discovery`, `bbb-eval-loop`, `b5-mode`) are accurate as of
+  2026-07-07; re-verify with `ls .claude/skills/` from the library root.
 - The STATE.md template itself is a convention, not verified against tooling —
   no tool parses it; it is read by humans and models. Change it through this
   library's change control (`bbb-change-control`).

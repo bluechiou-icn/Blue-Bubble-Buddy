@@ -19,7 +19,7 @@ Copy the starter set into any repo (full options: `bbb-install-and-use`):
 
 ```bash
 mkdir -p "$TARGET/.claude/skills"
-cp -r .claude/skills/f5-mode .claude/skills/bbb-eval-loop \
+cp -r .claude/skills/b5-mode .claude/skills/bbb-eval-loop \
       .claude/skills/bbb-verification-and-evidence .claude/skills/bbb-state-and-memory \
       "$TARGET/.claude/skills/"
 ```
@@ -32,7 +32,7 @@ first UI work → `bbb-visual-self-check`, and so on.
 ### Primitives — the behavior core
 | Skill | One line |
 |---|---|
-| `f5-mode` | The behavior contract: conclusion-first replies, immediate action, evidence-backed progress reports, minimum scope, disciplined turn endings. Successor of V1.0. |
+| `b5-mode` | The behavior contract: conclusion-first replies, immediate action, evidence-backed progress reports, minimum scope, disciplined turn endings. |
 | `bbb-project-discovery` | Investigate an unfamiliar repo like an incoming principal engineer before changing anything; Project Brief template; ask the human at most five questions. |
 | `bbb-debugging-playbook` | Reproduce first, rank mechanisms, run discriminating experiments one change at a time; a fix must explain every observation including the negatives. |
 

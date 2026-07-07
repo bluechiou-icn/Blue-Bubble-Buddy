@@ -51,7 +51,11 @@ deviation is recorded in STATE.md (`bbb-state-and-memory`).
 ## The non-negotiables
 
 Nothing in the library may contradict these. Each carries its rationale;
-rules without rationale die in audits (`bbb-rule-distillation`).
+rules without rationale die in audits (`bbb-rule-distillation`). Scope note:
+these seven bind the library's *content*; the per-session behavior rules
+(conclusion-first, evidence-backed reporting, minimum scope) bind *sessions*
+and are owned by `b5-mode` — together the two sets are the library's full
+doctrine.
 
 1. **Ground truth only.** Every published command/flag/path verified by
    execution. *A zero-context reader cannot detect a lie; a wrong runbook is
@@ -72,9 +76,9 @@ rules without rationale die in audits (`bbb-rule-distillation`).
 6. **Provenance mandatory.** Every skill ends with "Provenance and
    maintenance": authorship date, volatile facts, re-verification one-liners.
    *Skills outlive their authors; drift must be detectable by the reader.*
-7. **STATE.md read before and updated after every run** on this library.
-   *A session that skips this destroys its successor's context —
-   `bbb-state-and-memory` owns the format.*
+7. **STATE.md read before and updated after every run** on this library
+   (if it is absent, create it — `bbb-state-and-memory` has the template).
+   *A session that skips this destroys its successor's context.*
 
 ## No routing around
 

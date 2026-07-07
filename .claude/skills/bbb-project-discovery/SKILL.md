@@ -56,14 +56,11 @@ difference is a finding.
 git log --oneline --graph --all | head -50    # shape and recency
 git shortlog -sn --all | head -5              # who built this
 git log -1 --format="%h %ad %s" --date=short  # how alive is it
-git log --diff-filter=D --summary | grep delete       # what was removed (∅ ok)
-git log --oneline -i --grep="revert\|rollback\|undo"  # what was undone (∅ ok)
-git branch -a --no-merged                     # stalled/dead branches (∅ ok)
 ```
-Deletions and reverts are the highest-value lines in the whole survey: each is
-a decision someone made under pressure. For anything suspicious, dig with
-`git show <sha> --stat`, and record findings as chronicle entries
-(`bbb-failure-archaeology` owns the format and deeper mining commands).
+Then mine the scars — deletions, reverts, stalled branches — with the verified
+commands in `bbb-failure-archaeology` (it owns history mining). Deletions and
+reverts are the highest-value lines in the whole survey: each is a decision
+someone made under pressure. Record what you find as chronicle entries there.
 
 **4. Open-work signals.**
 ```bash
@@ -123,6 +120,6 @@ recurring answers into durable rules (`bbb-rule-distillation`).
   check GitLab/Jenkins equivalents); the manifest list in step 1 reflects
   common ecosystems as of 2026 and should grow with new ones.
 - Re-verify the whole sequence in one line (expect no errors, some ∅):
-  `git log --oneline --graph --all | head -5 && git log --diff-filter=D --summary | head -5; ls .github/workflows/ 2>/dev/null`
+  `git log --oneline --graph --all | head -5; ls .github/workflows/ 2>/dev/null`
 - Sibling names cited here — re-verify with `ls .claude/skills/` at the
   library root.

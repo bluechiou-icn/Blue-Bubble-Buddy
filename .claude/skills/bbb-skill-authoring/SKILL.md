@@ -60,7 +60,7 @@ plausibly separates them.
 | `description` | ≤1024 chars, third person, trigger-rich |
 | Body length | Target 120–350 lines; split overflow into reference files in the skill dir and link them |
 | Section order | Purpose → When NOT to use → core content → Provenance and maintenance (last) |
-| Language | English body (bilingual triggers allowed in the description where users use them, e.g. `f5-mode`) |
+| Language | English body (bilingual triggers allowed in the description where users actually use them) |
 | Scripts | Every shipped script verified by actually running it; document the verified invocation |
 | Volatile facts | Date-stamped inline, e.g. "(as of 2026-07-07)" |
 

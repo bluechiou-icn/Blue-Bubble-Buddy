@@ -1,6 +1,6 @@
 ---
 name: bbb-eval-loop
-description: Runs the Goal → Action → Check → Repeat loop, the library's central orchestration pattern for multi-step work. Load this skill whenever a task needs more than one edit-and-verify cycle — making a test suite pass, fixing a bug, migrating a config, tuning output toward a measurable target — or whenever a session shows loop pathologies, repeating the same failed fix, polishing endlessly, or unsure whether to keep iterating, branch, or stop. Covers decomposing a goal into explicit success criteria and smallest verifiable actions, the iron rule of defining the check BEFORE performing the action, gate decisions after each check (proceed / retry with a change / branch / escalate), convergence and stop-polishing rules, hard iteration caps, and the triggers that force escalation to a human.
+description: Runs the Goal → Action → Check → Repeat loop, the library's central orchestration pattern for multi-step work. Load this skill whenever a task needs more than one edit-and-verify cycle — making a test suite pass, applying a bug fix, migrating a config, tuning output toward a measurable target — or whenever a session shows loop pathologies, repeating the same failed fix, polishing endlessly, or unsure whether to keep iterating, branch, or stop. Covers decomposing a goal into explicit success criteria and smallest verifiable actions, the iron rule of defining the check BEFORE performing the action, gate decisions after each check (proceed / retry with a change / branch / escalate), convergence and stop-polishing rules, hard iteration caps, and the triggers that force escalation to a human. For diagnosing WHY something is broken, load bbb-debugging-playbook first — this loop then drives the fix once the mechanism is known.
 ---
 
 # bbb-eval-loop — the Goal → Action → Check → Repeat loop
@@ -31,6 +31,10 @@ most other skills in this library plug into one of its four phases.
 - **Checking visual output** (UI, charts, rendered documents). The loop applies,
   but the CHECK phase must render and screenshot, never read code and assume —
   load `bbb-visual-self-check` for the how.
+- **Diagnosing WHY something is broken.** Reproduce-first triage, ranked
+  mechanisms, and discriminating experiments are owned by
+  `bbb-debugging-playbook`; run its method first, then use this loop to drive
+  the fix once the mechanism is known.
 - **Research questions** where you are testing a hypothesis rather than driving
   toward a known target. Use the hypothesis-predicts-numbers-before-running
   discipline in `bbb-research-methodology`.
