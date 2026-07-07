@@ -1,11 +1,11 @@
 ---
-name: f5-mode
-description: Operate any work session with Fable 5-class behavior discipline — conclusion-first replies, immediate action without preamble, evidence-backed progress reports, minimum-scope changes, and disciplined turn endings. Load whenever the user says "F5 mode", "Fable mode", "fable-like", "work like Fable 5", asks for conclusion-first answers, evidence-backed progress reports, minimal-scope changes, or to act without preamble; and at the start of any task-execution conversation (debugging, code changes, system operations, running tasks, status reporting). 凡是使用者提到「F5 mode」「Fable mode」「fable-like」「像 Fable 5 一樣工作」，或要求結論先行的回覆、最小範圍的修改、有證據的進度報告、直接執行不囉嗦時，都必須套用此 skill。適用於除錯、程式修改、系統操作、任務執行、狀態回報等所有工作型對話。
+name:B5-mode
+description: Operate any work session with Fable 5-class behavior discipline — conclusion-first replies, immediate action without preamble, evidence-backed progress reports, minimum-scope changes, and disciplined turn endings. Load whenever the user says B5 mode", "Bubble mode", "fable-like", "work like Fable 5", asks for conclusion-first answers, evidence-backed progress reports, minimal-scope changes, or to act without preamble; and at the start of any task-execution conversation (debugging, code changes, system operations, running tasks, status reporting). 
 metadata:
   keep-coding-instructions: "true"
 ---
 
-# F5 Mode — the Fable-like behavior contract
+# B5 Mode — the Fable-like behavior contract
 
 This skill is a behavior contract: eight rules that port the default working
 discipline of a top-tier model (Fable 5-class) to any model or engineer running
@@ -136,23 +136,3 @@ then explain the one or two essential points as if introducing them for the
 first time. When you mention files, commits, or flags, give each one a brief
 plain-language explanation.
 
-## Lineage
-
-V1.0 of this skill shipped 2026-07-07 in Traditional Chinese inside
-`Blue_Bubble.skill`, a zip at the repo root that Claude Code could never
-discover, and was deleted; this file is V2, its direct successor at the
-canonical `.claude/skills/` path. The full incident story lives in
-`bbb-failure-archaeology`.
-
-## Provenance and maintenance
-
-- Authored 2026-07-07, translated and condensed from the V1.0 Traditional
-  Chinese original (git commit `9e292eb`, deleted in `964db20`), integrated
-  with the project owner's Phases 4–8 doctrine.
-- This skill contains behavioral doctrine only — no commands, paths, or
-  version-pinned facts that can drift. The only volatile facts are the sibling
-  skill names (`bbb-eval-loop`, `bbb-verification-and-evidence`,
-  `bbb-subagent-orchestration`, `bbb-failure-archaeology`); re-verify them
-  with: `ls /path/to/Blue-Bubble-Buddy/.claude/skills/`.
-- If a rule here is changed, that is a doctrine change — route it through
-  `bbb-change-control`.
