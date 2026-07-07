@@ -72,11 +72,4 @@ first UI work → `bbb-visual-self-check`, and so on.
    `bbb-change-control`. New skills follow `bbb-skill-authoring`.
 3. Ground truth only: never publish a command you did not run.
 
-## Lineage
-
-V1.0 (2026-07-07) was a single Traditional-Chinese skill, `f5-mode`, shipped as
-a `Blue_Bubble.skill` ZIP at the repo root — a placement Claude Code cannot
-discover; it was removed and the lesson became non-negotiable #4. The full
-story is chronicle entry #1 in `bbb-failure-archaeology`. This library is V2:
-`f5-mode` reauthored in English with bilingual triggers, plus fifteen sibling
-skills. License: MIT.
+License: MIT.
