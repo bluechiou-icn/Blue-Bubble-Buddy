@@ -129,14 +129,17 @@ Never leave a stale rule "just in case". Dead rules teach sessions to ignore the
 ones: once a reader catches one rule being wrong, every other rule loses authority.
 The one-line archaeology note preserves the history at zero attention cost.
 
-Audit commands (run in the target project root; verified 2026-07-07 against a sample CLAUDE.md):
+Audit commands (run in the target project root; verified 2026-07-17 against this
+repository's numbered-style CLAUDE.md, which the earlier bullet-only pattern
+silently counted as 0):
 
 ```bash
-# Count rules — a rising count with no retirements is the rule-inflation smell:
-grep -c '^- ' CLAUDE.md
+# Count rules — a rising count with no retirements is the rule-inflation smell.
+# Matches both "- rule" bullets and "1. rule" numbered styles:
+grep -cE '^(- |[0-9]+\. )' CLAUDE.md
 
 # List rules missing a parenthesized rationale — deletion candidates for the audit:
-grep -n '^- ' CLAUDE.md | grep -v '('
+grep -nE '^(- |[0-9]+\. )' CLAUDE.md | grep -v '('
 ```
 
 The second command assumes rationales are written in parentheses as this skill
@@ -184,6 +187,7 @@ archaeology entry; the PROCEDURE is a skill. Three artifacts, three homes, one i
 - Re-verify sibling skills still exist: `ls /home/user/Blue-Bubble-Buddy/.claude/skills/`
   (in a target repo: `ls .claude/skills/`).
 - Re-verify the audit commands against your project's CLAUDE.md:
-  `grep -c '^- ' CLAUDE.md` and `grep -n '^- ' CLAUDE.md | grep -v '('`
-  (both verified 2026-07-07 against a sample CLAUDE.md with three rules, one lacking
-  a rationale).
+  `grep -cE '^(- |[0-9]+\. )' CLAUDE.md` and
+  `grep -nE '^(- |[0-9]+\. )' CLAUDE.md | grep -v '('`
+  (verified 2026-07-17 against this repository's CLAUDE.md: count 5, all with
+  bold-title rationales; the pre-fix bullet-only pattern returned 0 here).
