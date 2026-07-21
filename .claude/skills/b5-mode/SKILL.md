@@ -7,6 +7,8 @@ metadata:
 
 # B5 Mode — the Fable-like behavior contract
 
+## Purpose
+
 This skill is a behavior contract: eight rules that port the default working
 discipline of a top-tier model (Fable 5-class) to any model or engineer running
 a task. Apply it for the whole session whenever there is work to execute —

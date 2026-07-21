@@ -5,7 +5,7 @@ description: Defines what counts as evidence and how to verify and report work. 
 
 # Verification and Evidence
 
-## Purpose / when to use
+## Purpose
 
 This skill defines the evidence bar for all work: what counts as proof that something works, how to verify each type of change, and how to report results honestly. Load it before claiming any task is done, before writing a progress report, and when choosing how to verify a change you just made. The one-sentence rule it exists to enforce: a claim of completed work is only as strong as the tool output behind it, and a fabricated or unbacked "done" is the worst failure a session can produce.
 
@@ -21,13 +21,30 @@ This skill defines the evidence bar for all work: what counts as proof that some
 
 Evidence comes in five strength levels. Always report which level backs each claim, and always seek the highest level the change allows. "Sufficient" below means: sufficient to state the claim without hedging in a report.
 
-| Level | Evidence type | What it looks like | Sufficient when | NOT sufficient when |
-|---|---|---|---|---|
-| 1 (strongest) | Observed runtime behavior / test output, with the actual command shown | You ran the command in this session, and the report quotes both the command and its output (or exit code). Example: `pytest tests/test_auth.py` output pasted with `2 passed`. | Almost always. This is the default bar for "done". | The test does not actually exercise the changed path (a passing but irrelevant test is level 5 wearing a costume), or the output is from a previous session or another machine. |
-| 2 | Reproducible measurement | A number produced by a command anyone can re-run: row counts, checksums, timings, byte sizes, HTTP status codes. | Verifying data changes, performance claims, and file integrity, where behavior is a quantity rather than a pass/fail run. | The measurement proxy does not capture what matters (file size unchanged does not mean content unchanged — use a checksum), or it was run once for a claim about variance or trends. |
-| 3 | Logs | Output the system emitted while running, read after the fact: server logs, CI logs, build output. | Confirming that an event occurred (a request arrived, a job ran, a config was loaded) when you cannot re-drive the flow directly. | Proving correct behavior, not just occurrence. Logs show what was recorded, not what happened; absence of an error line is not presence of success. Prefer re-running the flow (level 1) whenever possible. |
-| 4 | Static reasoning about code | "I read the function; the new branch handles the null case." No execution. | Low-stakes claims where execution is impossible in this environment (e.g., code that requires production credentials) — and only when explicitly labeled as reasoning, not as verification. | Any claim of "works", "fixed", or "done". Reading code tells you what you believe it does; only running it tells you what it does. Typechecks and compiles are barely above this level: they prove form, not behavior. |
-| 5 (weakest) | "It should work" | A prediction with no artifact behind it. | Never sufficient for a claim. Only acceptable phrased as an explicit expectation: "I expect X; unverified." | Everywhere else. If you catch yourself writing "should", either go get level 1–2 evidence or label the item unverified. |
+**Level 1 (strongest) — observed runtime behavior / test output, with the actual command shown.**
+- Looks like: you ran the command in this session, and the report quotes both the command and its output (or exit code). Example: `pytest tests/test_auth.py` output pasted with `2 passed`.
+- Sufficient: almost always — this is the default bar for "done".
+- NOT sufficient: the test does not actually exercise the changed path (a passing but irrelevant test is level 5 wearing a costume), or the output is from a previous session or another machine.
+
+**Level 2 — reproducible measurement.**
+- Looks like: a number produced by a command anyone can re-run — row counts, checksums, timings, byte sizes, HTTP status codes.
+- Sufficient: verifying data changes, performance claims, and file integrity, where behavior is a quantity rather than a pass/fail run.
+- NOT sufficient: the measurement proxy does not capture what matters (file size unchanged does not mean content unchanged — use a checksum), or it was run once for a claim about variance or trends.
+
+**Level 3 — logs.**
+- Looks like: output the system emitted while running, read after the fact — server logs, CI logs, build output.
+- Sufficient: confirming that an event occurred (a request arrived, a job ran, a config was loaded) when you cannot re-drive the flow directly.
+- NOT sufficient: proving correct behavior rather than mere occurrence. Logs show what was recorded, not what happened; absence of an error line is not presence of success. Prefer re-running the flow (level 1) whenever possible.
+
+**Level 4 — static reasoning about code.**
+- Looks like: "I read the function; the new branch handles the null case." No execution.
+- Sufficient: low-stakes claims where execution is impossible in this environment (e.g., code that requires production credentials) — and only when explicitly labeled as reasoning, not as verification.
+- NOT sufficient: any claim of "works", "fixed", or "done". Reading code tells you what you believe it does; only running it tells you what it does. Typechecks and compiles are barely above this level: they prove form, not behavior.
+
+**Level 5 (weakest) — "it should work".**
+- Looks like: a prediction with no artifact behind it.
+- Sufficient: never, for a claim. Only acceptable phrased as an explicit expectation: "I expect X; unverified."
+- NOT sufficient: everywhere else. If you catch yourself writing "should", either go get level 1–2 evidence or label the item unverified.
 
 Two rules that follow from the hierarchy:
 

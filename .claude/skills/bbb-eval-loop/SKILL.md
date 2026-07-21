@@ -3,9 +3,9 @@ name: bbb-eval-loop
 description: Runs the Goal → Action → Check → Repeat loop, the library's central orchestration pattern for multi-step work. Load this skill whenever a task needs more than one edit-and-verify cycle — making a test suite pass, applying a bug fix, migrating a config, tuning output toward a measurable target — or whenever a session shows loop pathologies, repeating the same failed fix, polishing endlessly, or unsure whether to keep iterating, branch, or stop. Covers decomposing a goal into explicit success criteria and smallest verifiable actions, the iron rule of defining the check BEFORE performing the action, gate decisions after each check (proceed / retry with a change / branch / escalate), convergence and stop-polishing rules, hard iteration caps, and the triggers that force escalation to a human. For diagnosing WHY something is broken, load bbb-debugging-playbook first — this loop then drives the fix once the mechanism is known.
 ---
 
-# bbb-eval-loop — the Goal → Action → Check → Repeat loop
+# Eval Loop — the Goal → Action → Check → Repeat loop
 
-## Purpose / when to use
+## Purpose
 
 This skill is the standard operating procedure for any task that takes more than one
 step to complete and whose outcome can be observed. It turns a fuzzy goal ("make the
@@ -51,8 +51,8 @@ Repeat the four phases until a stop condition (see below) fires:
 | 4. CHECK (run) → GATE | The check's actual output, compared to the expected value, then a gate decision | Proceed / retry with a change / branch / escalate — never silently continue |
 
 Note the ordering: the check is *defined* in phase 2 but *run* in phase 4. The
-action sits between the check's definition and its execution. That ordering is the
-whole point.
+action sits between the check's definition and its execution. That separation is
+the loop's entire safeguard.
 
 ## Phase 1 — Decompose the goal
 
